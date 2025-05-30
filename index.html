@@ -275,16 +275,12 @@
             <h2>Figures</h2>
             <div class="images-grid">
                 <div class="image-item">
-                    <div class="image-placeholder">
-                        Figure 1: Model Architecture
-                    </div>
-                    <div class="image-caption">Figure 1: Overview of the Fourier Neural Filter architecture</div>
+                    <img src="images/fnf_backbone.png" alt="FNF Backbone Architecture">
+                    <div class="image-caption"><strong>Figure 1: The FNF backbone.</strong> Our dual-branch design processes input embeddings through parallel expanded linear layers. The right branch captures time-domain patterns via GELU activation, while the left branch extracts frequency-domain features through Fourier transform, complex operations (two complex linear layers with Softshrink function), and inverse Fourier transform. The branches are combined via Hadamard product (⊙), enabling simultaneous modeling of local temporal and global spectral information.</div>
                 </div>
                 <div class="image-item">
-                    <div class="image-placeholder">
-                        Figure 2: Experimental Results
-                    </div>
-                    <div class="image-caption">Figure 2: Comparison of forecasting performance on benchmark datasets</div>
+                    <img src="images/radar_chart.png" alt="Radar Chart Performance Comparison">
+                    <div class="image-caption"><strong>Figure 2: Radar chart of forecasting performance across 11 benchmark datasets spanning five domains.</strong> The chart displays average MAE across different forecast horizons of 96, 192, 336, 720. Our proposed FNF (highlighted) consistently outperforms eight strong baseline models on diverse domains of energy, weather, transportation, environment, and nature with consistent hyperparameter settings.</div>
                 </div>
             </div>
         </div>
