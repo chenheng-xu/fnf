@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fourier Neural Filter (FNF) for multivariate long-term time series forecasting with dual-branch design (DBD) architecture. State-of-the-art performance across 11 benchmark datasets.">
+    <meta name="keywords" content="time series forecasting, Fourier Neural Filter, FNF, dual-branch design, machine learning, deep learning">
     <title>Multivariate Long-term Time Series Forecasting with Fourier Neural Filter</title>
     <style>
         * {
@@ -63,6 +65,42 @@
             line-height: 1.5;
         }
         
+        /* Table of Contents */
+        .toc {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+            border-left: 4px solid #27ae60;
+        }
+        
+        .toc h2 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .toc ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .toc li {
+            margin: 8px 0;
+        }
+        
+        .toc a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .toc a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+        
         .abstract {
             background: #f8f9fa;
             padding: 25px;
@@ -81,6 +119,93 @@
             text-align: justify;
             font-size: 1rem;
             line-height: 1.7;
+        }
+        
+        /* Quick Results Section */
+        .quick-results {
+            background: #e8f5e8;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+            border-left: 4px solid #27ae60;
+        }
+        
+        .quick-results h2 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .highlight-item {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .highlight-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #27ae60;
+            display: block;
+        }
+        
+        .highlight-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        /* Method Overview Section */
+        .method-overview {
+            background: #fff5e6;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+            border-left: 4px solid #f39c12;
+        }
+        
+        .method-overview h2 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .method-item {
+            background: white;
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .method-item h3 {
+            color: #e67e22;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .method-item ul {
+            margin-left: 20px;
+            color: #666;
+        }
+        
+        .method-item li {
+            margin: 5px 0;
         }
         
         .links-section {
@@ -208,6 +333,97 @@
             color: #666;
             font-style: italic;
             font-size: 0.95rem;
+            text-align: left;
+        }
+        
+        .results-section {
+            margin-top: 50px;
+        }
+        
+        .results-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            font-size: 1.5rem;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .results-table {
+            width: 100%;
+            min-width: 1200px;
+            border-collapse: collapse;
+            font-size: 0.75rem;
+            margin: 0;
+            background: white;
+        }
+        
+        .results-table th,
+        .results-table td {
+            padding: 8px 6px;
+            text-align: center;
+            border: 1px solid #ddd;
+            white-space: nowrap;
+        }
+        
+        .results-table th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+            color: #2c3e50;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .results-table .dataset-header {
+            background-color: #e9ecef;
+            font-weight: bold;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            width: 40px;
+            min-width: 40px;
+            position: sticky;
+            left: 0;
+            z-index: 11;
+        }
+        
+        .results-table .horizon-col {
+            position: sticky;
+            left: 40px;
+            background-color: #f8f9fa;
+            z-index: 9;
+        }
+        
+        .results-table .best {
+            background-color: #d4edda;
+            font-weight: bold;
+        }
+        
+        .results-table .second-best {
+            background-color: #f8f9fa;
+            text-decoration: underline;
+        }
+        
+        .scroll-hint {
+            text-align: center;
+            margin: 10px 0;
+            color: #666;
+            font-style: italic;
+            font-size: 0.85rem;
+        }
+        
+        .table-caption {
+            text-align: left;
+            margin: 15px 0;
+            color: #666;
+            font-style: italic;
+            font-size: 0.9rem;
         }
         
         @media (max-width: 768px) {
@@ -232,6 +448,25 @@
             .links-section {
                 flex-direction: column;
                 align-items: center;
+            }
+            
+            .results-table {
+                font-size: 0.65rem;
+            }
+            
+            .results-table th,
+            .results-table td {
+                padding: 4px 3px;
+            }
+            
+            .table-container {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .highlight-grid,
+            .method-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -260,14 +495,86 @@
             <div>² Institute for Artificial Intelligence, Peking University</div>
         </div>
         
-        <div class="abstract">
+        <!-- Table of Contents -->
+        <div class="toc" id="toc">
+            <h2>📋 Table of Contents</h2>
+            <ul>
+                <li><a href="#abstract">Abstract</a></li>
+                <li><a href="#quick-results">Quick Results</a></li>
+                <li><a href="#method-overview">Method Overview</a></li>
+                <li><a href="#figures">Figures</a></li>
+                <li><a href="#results">Experimental Results</a></li>
+                <li><a href="#links">Paper & Code</a></li>
+            </ul>
+        </div>
+        
+        <div class="abstract" id="abstract">
             <h2>Abstract</h2>
             <p>
                 Multivariate long-term time series forecasting has been suffering from the challenge of capturing both temporal dependencies within variables and spatial correlations across variables simultaneously. Current approaches predominantly repurpose backbones from natural language processing or computer vision (e.g., Transformers), which fail to adequately address the unique properties of time series (e.g., periodicity). The research community lacks a dedicated backbone with temporal-specific inductive biases, instead relying on domain-agnostic backbones supplemented with auxiliary techniques (e.g., signal decomposition). We introduce Fourier Neural Filter (FNF) as the backbone and Dual-Branch Design (DBD) as the architecture to provide excellent learning capabilities and optimal learning pathways for spatio-temporal modeling, respectively. Our theoretical analysis proves that FNF unifies local time-domain and global frequency-domain information processing within a single backbone that extends naturally to spatial modeling, while information bottleneck theory demonstrates that DBD provides superior gradient flow and representation capacity compared to existing unified or sequential architectures. Our empirical evaluation across 11 public benchmark datasets spanning five domains (energy, meteorology, transportation, environment, and nature) confirms state-of-the-art performance with consistent hyperparameter settings. Notably, our approach achieves these results without any auxiliary techniques, suggesting that properly designed neural architectures can capture the inherent properties of time series, potentially transforming time series modeling in scientific and industrial applications.
             </p>
         </div>
         
-        <div class="links-section">
+        <!-- Quick Results Section -->
+        <div class="quick-results" id="quick-results">
+            <h2>🚀 Quick Results</h2>
+            <p>Our proposed FNF achieves state-of-the-art performance across comprehensive benchmarks:</p>
+            <div class="highlight-grid">
+                <div class="highlight-item">
+                    <span class="highlight-number">11</span>
+                    <div class="highlight-label">Benchmark Datasets</div>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-number">5</span>
+                    <div class="highlight-label">Domains Covered</div>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-number">8</span>
+                    <div class="highlight-label">SOTA Baselines</div>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-number">O(N log N)</span>
+                    <div class="highlight-label">Computational Complexity</div>
+                </div>
+            </div>
+            <p style="margin-top: 15px; text-align: center; color: #27ae60; font-weight: bold;">
+                ✨ Consistent SOTA performance across Energy, Meteorology, Transportation, Environment, and Nature domains
+            </p>
+        </div>
+        
+        <!-- Method Overview Section -->
+        <div class="method-overview" id="method-overview">
+            <h2>🔬 Method Overview</h2>
+            <p>Our approach introduces two key innovations for multivariate long-term time series forecasting:</p>
+            <div class="method-grid">
+                <div class="method-item">
+                    <h3>🌊 Fourier Neural Filter (FNF)</h3>
+                    <ul>
+                        <li><strong>Input-dependent kernel:</strong> Adaptive information flow based on input properties</li>
+                        <li><strong>Dual-branch design:</strong> Parallel time-domain and frequency-domain processing</li>
+                        <li><strong>Selective activation:</strong> Hadamard product for modulating local and global information</li>
+                        <li><strong>Complex operations:</strong> Advanced frequency-domain transformations with Softshrink denoising</li>
+                        <li><strong>Unified backbone:</strong> No auxiliary techniques required</li>
+                    </ul>
+                </div>
+                <div class="method-item">
+                    <h3>🔀 Dual-Branch Design (DBD)</h3>
+                    <ul>
+                        <li><strong>Parallel architecture:</strong> Independent temporal and spatial processing branches</li>
+                        <li><strong>Information bottleneck:</strong> Optimal trade-offs between extraction and compression</li>
+                        <li><strong>Superior gradient flow:</strong> Direct pathways prevent cascading information loss</li>
+                        <li><strong>Enhanced representation:</strong> Better capacity vs. unified/sequential approaches</li>
+                        <li><strong>Scalable design:</strong> Handles high-dimensional multivariate series</li>
+                    </ul>
+                </div>
+            </div>
+            <p style="margin-top: 15px; font-style: italic; color: #666;">
+                <strong>Key Insight:</strong> By designing temporal-specific inductive biases directly into the backbone architecture, 
+                FNF naturally captures the inherent properties of time series without relying on auxiliary signal decomposition techniques.
+            </p>
+        </div>
+        
+        <div class="links-section" id="links">
             <a href="#" class="link-btn paper disabled" onclick="return false;">
                 <span class="icon">📄</span>
                 Paper
@@ -280,18 +587,149 @@
             </a>
         </div>
         
-        <div class="images-section">
+        <div class="images-section" id="figures">
             <h2>Figures</h2>
             <div class="images-grid">
                 <div class="image-item">
-                    <img src="images/fnf_backbone.png" alt="FNF Backbone Architecture">
-                    <div class="image-caption"><strong>Figure 1: The FNF backbone.</strong> Our dual-branch design processes input embeddings through parallel expanded linear layers. The right branch captures time-domain patterns via GELU activation, while the left branch extracts frequency-domain features through Fourier transform, complex operations (two complex linear layers with Softshrink function), and inverse Fourier transform. The branches are combined via Hadamard product (⊙), enabling simultaneous modeling of local temporal and global spectral information.</div>
+                    <img src="images/radar_chart.png" alt="Radar Chart Performance Comparison">
+                    <div class="image-caption"><strong>Figure 1: Radar chart of forecasting performance across 11 benchmark datasets spanning five domains.</strong> The chart displays average MAE across different forecast horizons of 96, 192, 336, 720. Our proposed FNF (highlighted) consistently outperforms eight strong baseline models on diverse domains of energy, weather, transportation, environment, and nature with consistent hyperparameter settings.</div>
                 </div>
                 <div class="image-item">
-                    <img src="images/radar_chart.png" alt="Radar Chart Performance Comparison">
-                    <div class="image-caption"><strong>Figure 2: Radar chart of forecasting performance across 11 benchmark datasets spanning five domains.</strong> The chart displays average MAE across different forecast horizons of 96, 192, 336, 720. Our proposed FNF (highlighted) consistently outperforms eight strong baseline models on diverse domains of energy, weather, transportation, environment, and nature with consistent hyperparameter settings.</div>
+                    <img src="images/fnf_backbone.png" alt="FNF Backbone Architecture">
+                    <div class="image-caption"><strong>Figure 2: The FNF backbone.</strong> Our dual-branch design processes input embeddings through parallel expanded linear layers. The right branch captures time-domain patterns via GELU activation, while the left branch extracts frequency-domain features through Fourier transform, complex operations (two complex linear layers with Softshrink function), and inverse Fourier transform. The branches are combined via Hadamard product (⊙), enabling simultaneous modeling of local temporal and global spectral information.</div>
+                </div>
+                <div class="image-item">
+                    <img src="images/dbd_architecture.png" alt="Dual-Branch Design Architecture">
+                    <div class="image-caption"><strong>Figure 3: The Dual-Branch Design (DBD) architecture.</strong> Each approach processes multivariate time series in shape (B, M, L, D) differently: (a) <strong>Unified</strong>: single backbone simultaneously models temporal and spatial patterns; (b) <strong>Sequential</strong>: cascades temporal filter followed by spatial filter; (c) <strong>Parallel</strong>: applies independent temporal and spatial filters in separate branches. Our DBD implements the parallel design to effectively perform temporal and spatial modeling.</div>
+                </div>
+                <div class="image-item">
+                    <img src="images/model_schematic.png" alt="Complete Model Schematic">
+                    <div class="image-caption"><strong>Figure 4: Complete model schematic.</strong> The overall architecture showing the data flow from input preprocessing through the dual-branch FNF backbone to final prediction output. The model integrates instance normalization, patch embedding, parallel temporal and spatial processing branches, and linear projection for forecasting.</div>
                 </div>
             </div>
+        </div>
+        
+        <div class="results-section" id="results">
+            <h2>Experimental Results</h2>
+            <p class="scroll-hint">⬅️ Scroll horizontally to view all models and results ➡️</p>
+            <div class="table-container">
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2" class="dataset-header">Dataset</th>
+                            <th rowspan="2" class="horizon-col">Horizon</th>
+                            <th colspan="2">FNF (Ours)</th>
+                            <th colspan="2">PatchTST</th>
+                            <th colspan="2">Crossformer</th>
+                            <th colspan="2">Pathformer</th>
+                            <th colspan="2">iTransformer</th>
+                            <th colspan="2">TimeMixer</th>
+                            <th colspan="2">DLinear</th>
+                            <th colspan="2">NLinear</th>
+                            <th colspan="2">TimesNet</th>
+                        </tr>
+                        <tr>
+                            <th>MSE</th>
+                            <th>MAE</th>
+                            <th>MSE</th>
+                            <th>MAE</th>
+                            <th>MSE</th>
+                            <th>MAE</th>
+                            <th>MSE</th>
+                            <th>MAE</th>
+                            <th>MSE</th>
+                            <th>MAE</th>
+                            <th>MSE</th>
+                            <th>MAE</th>
+                            <th>MSE</th>
+                            <th>MAE</th>
+                            <th>MSE</th>
+                            <th>MAE</th>
+                            <th>MSE</th>
+                            <th>MAE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- ETTh1 -->
+                        <tr><td rowspan="5" class="dataset-header">ETTh1</td><td class="horizon-col">96</td><td class="best">0.355</td><td class="best">0.388</td><td>0.376</td><td>0.396</td><td>0.405</td><td>0.426</td><td>0.372</td><td class="second-best">0.392</td><td>0.386</td><td>0.405</td><td>0.372</td><td>0.401</td><td class="second-best">0.371</td><td class="second-best">0.392</td><td>0.372</td><td>0.393</td><td>0.389</td><td>0.412</td></tr>
+                        <tr><td class="horizon-col">192</td><td class="best">0.396</td><td class="best">0.412</td><td class="second-best">0.399</td><td>0.416</td><td>0.413</td><td>0.442</td><td>0.408</td><td>0.415</td><td>0.424</td><td>0.440</td><td>0.413</td><td>0.430</td><td>0.404</td><td class="second-best">0.413</td><td>0.405</td><td class="second-best">0.413</td><td>0.440</td><td>0.443</td></tr>
+                        <tr><td class="horizon-col">336</td><td class="second-best">0.425</td><td class="best">0.425</td><td class="best">0.418</td><td>0.432</td><td>0.442</td><td>0.460</td><td>0.438</td><td>0.434</td><td>0.449</td><td>0.460</td><td>0.438</td><td>0.450</td><td>0.434</td><td>0.435</td><td>0.429</td><td class="second-best">0.427</td><td>0.482</td><td>0.465</td></tr>
+                        <tr><td class="horizon-col">720</td><td class="best">0.436</td><td class="best">0.445</td><td class="second-best">0.450</td><td>0.469</td><td>0.550</td><td>0.539</td><td class="second-best">0.450</td><td>0.463</td><td>0.495</td><td>0.487</td><td>0.486</td><td>0.484</td><td>0.469</td><td>0.489</td><td class="best">0.436</td><td class="second-best">0.452</td><td>0.525</td><td>0.501</td></tr>
+                        <tr><td class="horizon-col"><strong>Avg</strong></td><td class="best"><strong>0.403</strong></td><td class="best"><strong>0.417</strong></td><td class="second-best">0.410</td><td>0.428</td><td>0.452</td><td>0.466</td><td>0.417</td><td>0.426</td><td>0.438</td><td>0.448</td><td>0.427</td><td>0.441</td><td>0.419</td><td>0.432</td><td class="second-best">0.410</td><td class="second-best">0.421</td><td>0.459</td><td>0.455</td></tr>
+                        
+                        <!-- ETTh2 -->
+                        <tr><td rowspan="5" class="dataset-header">ETTh2</td><td class="horizon-col">96</td><td class="best">0.266</td><td class="best">0.326</td><td>0.277</td><td>0.339</td><td>0.611</td><td>0.557</td><td>0.279</td><td class="second-best">0.336</td><td>0.297</td><td>0.348</td><td>0.281</td><td>0.351</td><td>0.302</td><td>0.368</td><td class="second-best">0.275</td><td>0.338</td><td>0.319</td><td>0.363</td></tr>
+                        <tr><td class="horizon-col">192</td><td class="best">0.331</td><td class="best">0.371</td><td>0.345</td><td>0.381</td><td>0.810</td><td>0.651</td><td>0.345</td><td>0.380</td><td>0.372</td><td>0.403</td><td>0.349</td><td>0.387</td><td>0.405</td><td>0.433</td><td class="second-best">0.336</td><td class="second-best">0.379</td><td>0.411</td><td>0.416</td></tr>
+                        <tr><td class="horizon-col">336</td><td class="best">0.336</td><td class="best">0.388</td><td>0.368</td><td>0.404</td><td>0.928</td><td>0.698</td><td>0.378</td><td>0.408</td><td>0.388</td><td>0.417</td><td>0.366</td><td>0.413</td><td>0.496</td><td>0.490</td><td class="second-best">0.362</td><td class="second-best">0.403</td><td>0.415</td><td>0.443</td></tr>
+                        <tr><td class="horizon-col">720</td><td class="best">0.378</td><td class="best">0.418</td><td>0.397</td><td class="second-best">0.432</td><td>1.094</td><td>0.775</td><td>0.437</td><td>0.455</td><td>0.424</td><td>0.444</td><td>0.401</td><td>0.436</td><td>0.766</td><td>0.622</td><td class="second-best">0.396</td><td>0.437</td><td>0.429</td><td>0.445</td></tr>
+                        <tr><td class="horizon-col"><strong>Avg</strong></td><td class="best"><strong>0.327</strong></td><td class="best"><strong>0.375</strong></td><td>0.346</td><td class="second-best">0.389</td><td>0.860</td><td>0.670</td><td>0.359</td><td>0.394</td><td>0.370</td><td>0.403</td><td>0.349</td><td>0.396</td><td>0.492</td><td>0.478</td><td class="second-best">0.342</td><td class="second-best">0.389</td><td>0.393</td><td>0.416</td></tr>
+                        
+                        <!-- ETTm1 -->
+                        <tr><td rowspan="5" class="dataset-header">ETTm1</td><td class="horizon-col">96</td><td class="best">0.286</td><td class="best">0.330</td><td class="second-best">0.290</td><td>0.343</td><td>0.310</td><td>0.361</td><td class="second-best">0.290</td><td class="second-best">0.335</td><td>0.300</td><td>0.353</td><td>0.293</td><td>0.345</td><td>0.299</td><td>0.343</td><td>0.301</td><td>0.343</td><td>0.377</td><td>0.398</td></tr>
+                        <tr><td class="horizon-col">192</td><td class="best">0.324</td><td class="best">0.356</td><td class="second-best">0.329</td><td>0.368</td><td>0.363</td><td>0.402</td><td>0.337</td><td class="second-best">0.363</td><td>0.341</td><td>0.380</td><td>0.335</td><td>0.372</td><td class="second-best">0.334</td><td>0.364</td><td>0.337</td><td>0.365</td><td>0.405</td><td>0.411</td></tr>
+                        <tr><td class="horizon-col">336</td><td class="best">0.358</td><td class="best">0.376</td><td class="second-best">0.360</td><td>0.390</td><td>0.408</td><td>0.430</td><td>0.374</td><td class="second-best">0.384</td><td>0.374</td><td>0.394</td><td>0.368</td><td>0.386</td><td class="second-best">0.365</td><td class="second-best">0.384</td><td>0.371</td><td class="second-best">0.384</td><td>0.443</td><td>0.437</td></tr>
+                        <tr><td class="horizon-col">720</td><td>0.423</td><td class="best">0.410</td><td class="best">0.416</td><td>0.422</td><td>0.777</td><td>0.637</td><td>0.428</td><td>0.416</td><td>0.429</td><td>0.430</td><td>0.426</td><td>0.417</td><td class="second-best">0.418</td><td class="second-best">0.415</td><td>0.426</td><td class="second-best">0.415</td><td>0.495</td><td>0.464</td></tr>
+                        <tr><td class="horizon-col"><strong>Avg</strong></td><td class="best"><strong>0.347</strong></td><td class="best"><strong>0.368</strong></td><td class="second-best">0.348</td><td>0.380</td><td>0.464</td><td>0.457</td><td>0.357</td><td class="second-best">0.374</td><td>0.361</td><td>0.389</td><td>0.355</td><td>0.380</td><td>0.354</td><td>0.376</td><td>0.358</td><td>0.376</td><td>0.430</td><td>0.427</td></tr>
+                        
+                        <!-- ETTm2 -->
+                        <tr><td rowspan="5" class="dataset-header">ETTm2</td><td class="horizon-col">96</td><td class="best">0.158</td><td class="best">0.244</td><td>0.165</td><td>0.254</td><td>0.263</td><td>0.359</td><td>0.164</td><td class="second-best">0.250</td><td>0.175</td><td>0.266</td><td>0.165</td><td>0.256</td><td>0.164</td><td>0.255</td><td class="second-best">0.163</td><td>0.252</td><td>0.190</td><td>0.266</td></tr>
+                        <tr><td class="horizon-col">192</td><td class="best">0.214</td><td class="best">0.282</td><td>0.221</td><td>0.292</td><td>0.361</td><td>0.425</td><td>0.219</td><td class="second-best">0.288</td><td>0.242</td><td>0.312</td><td>0.225</td><td>0.298</td><td>0.224</td><td>0.304</td><td class="second-best">0.218</td><td>0.290</td><td>0.251</td><td>0.308</td></tr>
+                        <tr><td class="horizon-col">336</td><td class="best">0.267</td><td class="best">0.317</td><td>0.275</td><td>0.325</td><td>0.469</td><td>0.496</td><td class="best">0.267</td><td class="second-best">0.319</td><td>0.282</td><td>0.337</td><td>0.277</td><td>0.332</td><td>0.277</td><td>0.337</td><td class="second-best">0.273</td><td>0.326</td><td>0.322</td><td>0.350</td></tr>
+                        <tr><td class="horizon-col">720</td><td class="best">0.360</td><td class="second-best">0.379</td><td class="best">0.360</td><td>0.380</td><td>1.263</td><td>0.857</td><td class="second-best">0.361</td><td class="best">0.377</td><td>0.375</td><td>0.394</td><td class="best">0.360</td><td>0.387</td><td>0.371</td><td>0.401</td><td class="second-best">0.361</td><td>0.382</td><td>0.414</td><td>0.403</td></tr>
+                        <tr><td class="horizon-col"><strong>Avg</strong></td><td class="best"><strong>0.249</strong></td><td class="best"><strong>0.305</strong></td><td>0.255</td><td>0.312</td><td>0.589</td><td>0.534</td><td>0.252</td><td class="second-best">0.308</td><td>0.268</td><td>0.327</td><td>0.256</td><td>0.318</td><td>0.259</td><td>0.324</td><td>0.253</td><td>0.312</td><td>0.294</td><td>0.331</td></tr>
+                        
+                        <!-- Electricity -->
+                        <tr><td rowspan="5" class="dataset-header">Electricity</td><td class="horizon-col">96</td><td class="best">0.128</td><td class="best">0.219</td><td class="second-best">0.133</td><td>0.233</td><td>0.135</td><td>0.237</td><td>0.135</td><td class="second-best">0.222</td><td>0.134</td><td>0.230</td><td>0.153</td><td>0.256</td><td>0.140</td><td>0.237</td><td>0.141</td><td>0.236</td><td>0.164</td><td>0.267</td></tr>
+                        <tr><td class="horizon-col">192</td><td class="best">0.145</td><td class="best">0.236</td><td class="second-best">0.150</td><td class="second-best">0.248</td><td>0.160</td><td>0.262</td><td>0.157</td><td>0.253</td><td>0.154</td><td>0.250</td><td>0.168</td><td>0.269</td><td>0.154</td><td>0.250</td><td>0.155</td><td class="second-best">0.248</td><td>0.180</td><td>0.280</td></tr>
+                        <tr><td class="horizon-col">336</td><td class="best">0.157</td><td class="best">0.250</td><td class="second-best">0.168</td><td>0.267</td><td>0.182</td><td>0.282</td><td>0.170</td><td>0.267</td><td>0.169</td><td>0.265</td><td>0.189</td><td>0.291</td><td>0.169</td><td>0.268</td><td>0.171</td><td class="second-best">0.264</td><td>0.190</td><td>0.292</td></tr>
+                        <tr><td class="horizon-col">720</td><td class="second-best">0.201</td><td class="best">0.286</td><td>0.202</td><td>0.295</td><td>0.246</td><td>0.337</td><td>0.211</td><td>0.302</td><td class="best">0.194</td><td class="second-best">0.288</td><td>0.228</td><td>0.320</td><td>0.204</td><td>0.301</td><td>0.210</td><td>0.297</td><td>0.209</td><td>0.307</td></tr>
+                        <tr><td class="horizon-col"><strong>Avg</strong></td><td class="best"><strong>0.157</strong></td><td class="best"><strong>0.247</strong></td><td>0.163</td><td>0.260</td><td>0.180</td><td>0.279</td><td>0.168</td><td>0.261</td><td class="second-best">0.162</td><td class="second-best">0.258</td><td>0.184</td><td>0.284</td><td>0.166</td><td>0.264</td><td>0.169</td><td>0.261</td><td>0.185</td><td>0.286</td></tr>
+                        
+                        <!-- Weather -->
+                        <tr><td rowspan="5" class="dataset-header">Weather</td><td class="horizon-col">96</td><td>0.149</td><td class="best">0.188</td><td>0.149</td><td>0.196</td><td class="best">0.146</td><td>0.212</td><td>0.148</td><td class="second-best">0.195</td><td>0.157</td><td>0.207</td><td class="second-best">0.147</td><td>0.198</td><td>0.170</td><td>0.230</td><td>0.179</td><td>0.222</td><td>0.170</td><td>0.219</td></tr>
+                        <tr><td class="horizon-col">192</td><td>0.194</td><td class="best">0.232</td><td>0.193</td><td>0.240</td><td>0.195</td><td>0.261</td><td class="best">0.191</td><td class="second-best">0.235</td><td>0.200</td><td>0.248</td><td class="second-best">0.192</td><td>0.243</td><td>0.212</td><td>0.267</td><td>0.218</td><td>0.261</td><td>0.222</td><td>0.264</td></tr>
+                        <tr><td class="horizon-col">336</td><td>0.248</td><td class="best">0.274</td><td class="second-best">0.244</td><td class="second-best">0.281</td><td>0.268</td><td>0.325</td><td class="best">0.243</td><td class="best">0.274</td><td>0.252</td><td>0.287</td><td>0.247</td><td>0.284</td><td>0.257</td><td>0.305</td><td>0.266</td><td>0.296</td><td>0.293</td><td>0.310</td></tr>
+                        <tr><td class="horizon-col">720</td><td class="second-best">0.316</td><td class="best">0.326</td><td class="best">0.314</td><td>0.332</td><td>0.330</td><td>0.380</td><td>0.318</td><td class="best">0.326</td><td>0.320</td><td>0.336</td><td>0.318</td><td class="second-best">0.330</td><td>0.318</td><td>0.356</td><td>0.334</td><td>0.344</td><td>0.360</td><td>0.355</td></tr>
+                        <tr><td class="horizon-col"><strong>Avg</strong></td><td class="second-best"><strong>0.226</strong></td><td class="best"><strong>0.255</strong></td><td class="best">0.225</td><td>0.262</td><td>0.234</td><td>0.294</td><td class="best">0.225</td><td class="second-best">0.257</td><td>0.232</td><td>0.269</td><td class="second-best">0.226</td><td>0.263</td><td>0.239</td><td>0.289</td><td>0.249</td><td>0.280</td><td>0.261</td><td>0.287</td></tr>
+                        
+                        <!-- Traffic -->
+                        <tr><td rowspan="5" class="dataset-header">Traffic</td><td class="horizon-col">96</td><td>0.379</td><td class="best">0.242</td><td>0.379</td><td>0.271</td><td>0.514</td><td>0.282</td><td>0.384</td><td class="second-best">0.250</td><td class="best">0.363</td><td>0.265</td><td class="second-best">0.369</td><td>0.257</td><td>0.410</td><td>0.282</td><td>0.410</td><td>0.279</td><td>0.600</td><td>0.313</td></tr>
+                        <tr><td class="horizon-col">192</td><td class="second-best">0.393</td><td class="best">0.248</td><td>0.394</td><td>0.277</td><td>0.501</td><td>0.273</td><td>0.405</td><td class="second-best">0.257</td><td class="best">0.384</td><td>0.273</td><td>0.400</td><td>0.272</td><td>0.423</td><td>0.288</td><td>0.423</td><td>0.284</td><td>0.619</td><td>0.328</td></tr>
+                        <tr><td class="horizon-col">336</td><td class="second-best">0.401</td><td class="best">0.253</td><td>0.404</td><td>0.281</td><td>0.507</td><td>0.279</td><td>0.424</td><td class="second-best">0.265</td><td class="best">0.396</td><td>0.277</td><td>0.407</td><td>0.272</td><td>0.436</td><td>0.296</td><td>0.436</td><td>0.291</td><td>0.627</td><td>0.330</td></tr>
+                        <tr><td class="horizon-col">720</td><td class="best">0.438</td><td class="best">0.273</td><td class="second-best">0.442</td><td>0.302</td><td>0.571</td><td>0.301</td><td>0.452</td><td class="second-best">0.283</td><td>0.445</td><td>0.308</td><td>0.461</td><td>0.316</td><td>0.466</td><td>0.315</td><td>0.464</td><td>0.308</td><td>0.659</td><td>0.342</td></tr>
+                        <tr><td class="horizon-col"><strong>Avg</strong></td><td class="second-best"><strong>0.402</strong></td><td class="best"><strong>0.254</strong></td><td>0.404</td><td>0.282</td><td>0.523</td><td>0.283</td><td>0.416</td><td class="second-best">0.263</td><td class="best">0.397</td><td>0.280</td><td>0.409</td><td>0.279</td><td>0.433</td><td>0.295</td><td>0.433</td><td>0.290</td><td>0.626</td><td>0.328</td></tr>
+                        
+                        <!-- AQShunyi -->
+                        <tr><td rowspan="5" class="dataset-header">AQShunyi</td><td class="horizon-col">96</td><td class="best">0.629</td><td class="best">0.461</td><td class="second-best">0.648</td><td>0.481</td><td>0.652</td><td>0.484</td><td>0.667</td><td class="second-best">0.472</td><td>0.650</td><td>0.479</td><td>0.654</td><td>0.483</td><td>0.651</td><td>0.492</td><td>0.653</td><td>0.486</td><td>0.658</td><td>0.488</td></tr>
+                        <tr><td class="horizon-col">192</td><td class="second-best">0.685</td><td class="best">0.484</td><td>0.690</td><td>0.501</td><td class="best">0.674</td><td>0.499</td><td>0.707</td><td class="second-best">0.491</td><td>0.693</td><td>0.498</td><td>0.700</td><td>0.498</td><td>0.691</td><td>0.512</td><td>0.701</td><td>0.506</td><td>0.707</td><td>0.511</td></tr>
+                        <tr><td class="horizon-col">336</td><td class="best">0.704</td><td class="best">0.497</td><td class="second-best">0.711</td><td>0.515</td><td class="best">0.704</td><td>0.515</td><td>0.732</td><td class="second-best">0.503</td><td>0.713</td><td>0.510</td><td>0.715</td><td>0.510</td><td>0.716</td><td>0.529</td><td>0.722</td><td>0.519</td><td>0.785</td><td>0.537</td></tr>
+                        <tr><td class="horizon-col">720</td><td>0.764</td><td>0.522</td><td>0.770</td><td>0.538</td><td class="best">0.747</td><td class="second-best">0.518</td><td>0.783</td><td class="best">0.515</td><td>0.766</td><td>0.537</td><td>0.756</td><td>0.534</td><td>0.765</td><td>0.556</td><td>0.777</td><td>0.545</td><td class="second-best">0.755</td><td>0.527</td></tr>
+                        <tr><td class="horizon-col"><strong>Avg</strong></td><td class="second-best"><strong>0.695</strong></td><td class="best"><strong>0.491</strong></td><td>0.704</td><td>0.508</td><td class="best">0.694</td><td>0.504</td><td>0.722</td><td class="second-best">0.495</td><td>0.705</td><td>0.506</td><td>0.706</td><td>0.506</td><td>0.705</td><td>0.522</td><td>0.713</td><td>0.514</td><td>0.726</td><td>0.515</td></tr>
+                        
+                        <!-- AQWan -->
+                        <tr><td rowspan="5" class="dataset-header">AQWan</td><td class="horizon-col">96</td><td class="best">0.711</td><td class="best">0.446</td><td>0.745</td><td>0.470</td><td>0.750</td><td>0.465</td><td>0.761</td><td class="second-best">0.458</td><td>0.747</td><td>0.470</td><td class="second-best">0.744</td><td>0.468</td><td>0.756</td><td>0.481</td><td>0.758</td><td>0.475</td><td>0.791</td><td>0.488</td></tr>
+                        <tr><td class="horizon-col">192</td><td class="second-best">0.773</td><td class="best">0.473</td><td>0.792</td><td>0.491</td><td class="best">0.762</td><td>0.479</td><td>0.801</td><td class="second-best">0.478</td><td>0.787</td><td>0.486</td><td>0.804</td><td>0.488</td><td>0.800</td><td>0.502</td><td>0.809</td><td>0.496</td><td>0.779</td><td>0.490</td></tr>
+                        <tr><td class="horizon-col">336</td><td class="best">0.799</td><td class="best">0.486</td><td>0.819</td><td>0.503</td><td class="second-best">0.802</td><td>0.504</td><td>0.821</td><td class="second-best">0.488</td><td>0.814</td><td>0.497</td><td>0.813</td><td>0.500</td><td>0.823</td><td>0.516</td><td>0.830</td><td>0.508</td><td>0.814</td><td>0.505</td></tr>
+                        <tr><td class="horizon-col">720</td><td>0.588</td><td class="best">0.483</td><td>0.574</td><td>0.499</td><td class="best">0.543</td><td class="best">0.483</td><td>0.596</td><td class="best">0.483</td><td>0.591</td><td>0.501</td><td>0.588</td><td>0.498</td><td class="second-best">0.548</td><td class="second-best">0.486</td><td>0.595</td><td>0.504</td><td>0.627</td><td>0.511</td></tr>
+                        <tr><td class="horizon-col"><strong>Avg</strong></td><td>0.515</td><td class="best"><strong>0.438</strong></td><td>0.511</td><td>0.465</td><td class="best">0.482</td><td>0.447</td><td>0.520</td><td class="second-best">0.441</td><td>0.522</td><td>0.456</td><td>0.517</td><td>0.451</td><td class="second-best">0.496</td><td>0.451</td><td>0.522</td><td>0.457</td><td>0.537</td><td>0.465</td></tr>
+                        
+                        <!-- CzeLan -->
+                        <tr><td rowspan="5" class="dataset-header">CzeLan</td><td class="horizon-col">96</td><td class="best">0.170</td><td class="best">0.208</td><td>0.183</td><td>0.251</td><td>0.581</td><td>0.443</td><td class="second-best">0.172</td><td class="second-best">0.213</td><td>0.177</td><td>0.239</td><td>0.175</td><td>0.230</td><td>0.211</td><td>0.289</td><td>0.178</td><td>0.229</td><td>0.176</td><td>0.237</td></tr>
+                        <tr><td class="horizon-col">192</td><td class="best">0.200</td><td class="best">0.231</td><td>0.208</td><td>0.271</td><td>0.705</td><td>0.503</td><td>0.207</td><td class="second-best">0.236</td><td class="second-best">0.201</td><td>0.257</td><td>0.206</td><td>0.254</td><td>0.252</td><td>0.323</td><td>0.210</td><td>0.252</td><td>0.215</td><td>0.279</td></tr>
+                        <tr><td class="horizon-col">336</td><td class="second-best">0.228</td><td class="best">0.257</td><td>0.243</td><td>0.302</td><td>0.971</td><td>0.596</td><td>0.240</td><td class="second-best">0.262</td><td>0.232</td><td>0.282</td><td>0.230</td><td>0.277</td><td>0.317</td><td>0.366</td><td>0.243</td><td>0.280</td><td class="best">0.224</td><td>0.288</td></tr>
+                        <tr><td class="horizon-col">720</td><td class="second-best">0.262</td><td class="best">0.286</td><td>0.273</td><td>0.335</td><td>1.566</td><td>0.762</td><td>0.288</td><td class="second-best">0.298</td><td class="best">0.261</td><td>0.311</td><td class="second-best">0.262</td><td>0.309</td><td>0.358</td><td>0.392</td><td>0.284</td><td>0.317</td><td>0.282</td><td>0.337</td></tr>
+                        <tr><td class="horizon-col"><strong>Avg</strong></td><td class="best"><strong>0.215</strong></td><td class="best"><strong>0.245</strong></td><td>0.226</td><td>0.289</td><td>0.955</td><td>0.576</td><td>0.226</td><td class="second-best">0.252</td><td class="second-best">0.217</td><td>0.272</td><td>0.218</td><td>0.267</td><td>0.284</td><td>0.342</td><td>0.228</td><td>0.269</td><td>0.224</td><td>0.285</td></tr>
+                        
+                        <!-- ZafNoo -->
+                        <tr><td rowspan="5" class="dataset-header">ZafNoo</td><td class="horizon-col">96</td><td>0.437</td><td class="best">0.389</td><td>0.444</td><td>0.426</td><td class="best">0.432</td><td>0.419</td><td>0.435</td><td class="second-best">0.391</td><td>0.439</td><td>0.408</td><td>0.441</td><td>0.396</td><td class="second-best">0.434</td><td>0.411</td><td>0.446</td><td>0.410</td><td>0.479</td><td>0.424</td></tr>
+                        <tr><td class="horizon-col">192</td><td>0.498</td><td class="second-best">0.429</td><td>0.498</td><td>0.456</td><td class="best">0.432</td><td class="best">0.419</td><td>0.501</td><td>0.432</td><td>0.505</td><td>0.443</td><td>0.498</td><td>0.444</td><td class="second-best">0.484</td><td>0.444</td><td>0.503</td><td>0.447</td><td>0.491</td><td>0.446</td></tr>
+                        <tr><td class="horizon-col">336</td><td>0.539</td><td class="best">0.453</td><td>0.530</td><td>0.480</td><td class="second-best">0.521</td><td>0.469</td><td>0.551</td><td class="second-best">0.461</td><td>0.555</td><td>0.473</td><td>0.543</td><td>0.466</td><td class="best">0.518</td><td>0.464</td><td>0.544</td><td>0.470</td><td>0.551</td><td>0.479</td></tr>
+                        <tr><td class="horizon-col">720</td><td>0.588</td><td class="best">0.483</td><td>0.574</td><td>0.499</td><td class="best">0.543</td><td class="best">0.483</td><td>0.596</td><td class="best">0.483</td><td>0.591</td><td>0.501</td><td>0.588</td><td>0.498</td><td class="second-best">0.548</td><td class="second-best">0.486</td><td>0.595</td><td>0.504</td><td>0.627</td><td>0.511</td></tr>
+                        <tr><td class="horizon-col"><strong>Avg</strong></td><td>0.515</td><td class="best"><strong>0.438</strong></td><td>0.511</td><td>0.465</td><td class="best">0.482</td><td>0.447</td><td>0.520</td><td class="second-best">0.441</td><td>0.522</td><td>0.456</td><td>0.517</td><td>0.451</td><td class="second-best">0.496</td><td>0.451</td><td>0.522</td><td>0.457</td><td>0.537</td><td>0.465</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="table-caption"><strong>Table A3: Comprehensive experimental results on multivariate long-term forecasting.</strong> Best results in <strong>bold</strong>, second-best <u>underlined</u>. FNF consistently outperforms baseline models across different datasets and forecast horizons, demonstrating superior performance in both MSE and MAE metrics. <em>Note: This shows a subset of datasets. The complete table with all 11 datasets (ETTh1, ETTh2, ETTm1, ETTm2, Electricity, Weather, Traffic, AQShunyi, AQWan, CzeLan, ZafNoo) and all 9 baseline models is available in the full paper.</em></p>
         </div>
     </div>
 </body>
