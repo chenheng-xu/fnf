@@ -294,6 +294,11 @@
             width: 100%;
         }
         
+        /* Special styling for Figure 2 - smaller size */
+        .image-item.figure-2 {
+            max-width: 500px;
+        }
+        
         .image-placeholder {
             width: 100%;
             height: 250px;
@@ -529,10 +534,6 @@
                     <div class="highlight-label">Domains Covered</div>
                 </div>
                 <div class="highlight-item">
-                    <span class="highlight-number">8</span>
-                    <div class="highlight-label">SOTA Baselines</div>
-                </div>
-                <div class="highlight-item">
                     <span class="highlight-number">O(N log N)</span>
                     <div class="highlight-label">Computational Complexity</div>
                 </div>
@@ -594,7 +595,7 @@
                     <img src="images/radar_chart.png" alt="Radar Chart Performance Comparison">
                     <div class="image-caption"><strong>Figure 1: Radar chart of forecasting performance across 11 benchmark datasets spanning five domains.</strong> The chart displays average MAE across different forecast horizons of 96, 192, 336, 720. Our proposed FNF (highlighted) consistently outperforms eight strong baseline models on diverse domains of energy, weather, transportation, environment, and nature with consistent hyperparameter settings.</div>
                 </div>
-                <div class="image-item">
+                <div class="image-item figure-2">
                     <img src="images/fnf_backbone.png" alt="FNF Backbone Architecture">
                     <div class="image-caption"><strong>Figure 2: The FNF backbone.</strong> Our dual-branch design processes input embeddings through parallel expanded linear layers. The right branch captures time-domain patterns via GELU activation, while the left branch extracts frequency-domain features through Fourier transform, complex operations (two complex linear layers with Softshrink function), and inverse Fourier transform. The branches are combined via Hadamard product (⊙), enabling simultaneous modeling of local temporal and global spectral information.</div>
                 </div>
